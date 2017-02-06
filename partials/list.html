@@ -1,0 +1,36 @@
+  				<h1 class="page-header">List Products</h1>
+  				<div class="table-responsive">
+  					<table class="table table-striped">
+  						<thead>
+  							<tr>
+  								<th>ID</th>
+  								<th>SKU</th>
+  								<th>Name</th>
+  								<th>Description</th>
+  								<th>Price</th>
+                                <th>Image</th>
+                                <th>Category</th>
+                                <th>Stock</th>
+                                <th>Active</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+  							</tr>
+  						</thead>
+  						<tbody>
+  							<tr ng-repeat="product in products | filter: myFilter">
+                                <td ng-bind="product.id"></td>
+                                <td ng-bind="product.sku.label"></td>
+                                <td ng-bind="product.name"></td>
+                                <td ng-bind="product.description"></td>
+                                <td ng-bind="product.price"></td>
+                                <td><img ng-src="{{product.image_url}}" class="img-rounded" width="20%"></td>
+                                <td ng-bind="product.category.label"></td>
+                                <td ng-bind="product.stock"></td>
+                                <td ng-show="product.active">Active</td>
+                                <td ng-show="!product.active">Inactive</td>
+                                <td><a ui-sref="dashboard.product({id : product.id})" class="btn btn-primary"><i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i></a></td>
+                                <td><button type="button" class="btn btn-danger" ng-click="deleteProduct(product.id)"><i class="fa fa-times fa-1x" aria-hidden="true"></i></button></td>
+  							</tr>
+  						</tbody>
+  					</table>
+  				</div>
